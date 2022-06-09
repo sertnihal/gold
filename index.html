@@ -34,5 +34,33 @@ if ('serviceWorker' in navigator) {
 </script>
   <h1>Hello World!</h1>
   <img src="icon-192x192.png">
+	
+<div id="xaccel"></div>
+<div id="yaccel"></div>
+<div id="zaccel"></div>
+	
+<script>
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+
+window.addEventListener('devicemotion', function(event) {
+//Momentane Beschleunigungen anzeigen
+$("#xaccel").html(Math.round(event.acceleration.x));
+$("#yaccel").html(Math.round(event.acceleration.y));
+$("#zaccel").html(Math.round(event.acceleration.z));
+
+
+//Bild wechseln bei genügend großer Beschleunigung
+/*
+if ((Math.abs(event.acceleration.x) + Math.abs(event.acceleration.y) + Math.abs(event.acceleration.z)) > 50) {
+$(".app").css("background", "url('img/dog-cartoon-3.jpg') no-repeat center top");
+}*/
+});
+}
+	
+
+</script>
+	
 </body>
 </html>
